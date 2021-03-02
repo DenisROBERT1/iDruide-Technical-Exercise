@@ -9,8 +9,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SvcControl", "SvcControl\Sv
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SvcInterface", "SvcInterface\SvcInterface.vcxproj", "{9741BE7F-1A09-4877-AFDA-601CB32BA920}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestPipe", "TestPipe\TestPipe.vcxproj", "{8D2548BA-0A72-4444-82D1-CFFC2A8B60AF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -33,10 +31,6 @@ Global
 		{9741BE7F-1A09-4877-AFDA-601CB32BA920}.Debug|Win32.Build.0 = Debug|Win32
 		{9741BE7F-1A09-4877-AFDA-601CB32BA920}.Release|Win32.ActiveCfg = Release|Win32
 		{9741BE7F-1A09-4877-AFDA-601CB32BA920}.Release|Win32.Build.0 = Release|Win32
-		{8D2548BA-0A72-4444-82D1-CFFC2A8B60AF}.Debug|Win32.ActiveCfg = Debug|Win32
-		{8D2548BA-0A72-4444-82D1-CFFC2A8B60AF}.Debug|Win32.Build.0 = Debug|Win32
-		{8D2548BA-0A72-4444-82D1-CFFC2A8B60AF}.Release|Win32.ActiveCfg = Release|Win32
-		{8D2548BA-0A72-4444-82D1-CFFC2A8B60AF}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
