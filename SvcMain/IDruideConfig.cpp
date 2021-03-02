@@ -31,7 +31,7 @@ bool ConfigureCamera(bool bEnabled)
 
 
 	// Open registry key LOCAL MACHINE
-  Error = RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam"), 0,
+  Error = RegOpenKeyEx(HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam"), 0,
                        KEY_READ | KEY_WRITE, &hKey);
 
   // Write "Value=Allow" or "Value=Deny"
@@ -41,7 +41,7 @@ bool ConfigureCamera(bool bEnabled)
 		if (bEnabled) szValue = TEXT("Allow");
 		else szValue = TEXT("Deny");
 		dwSize = lstrlen(szValue) * sizeof(TCHAR);
-		Error = RegSetValueEx(hKey, _T("Value"), 0, REG_SZ, (LPBYTE) (LPCTSTR) szValue, dwSize);
+		Error = RegSetValueEx(hKey, TEXT("Value"), 0, REG_SZ, (LPBYTE) (LPCTSTR) szValue, dwSize);
 		if (Error == ERROR_SUCCESS)
 		{
 			Ok = true;
@@ -130,17 +130,28 @@ char* getMAC()
   return mac_addr; // caller must free.
 }
 
-HANDLE CreateSrvNamedPipe()
+char* getOS()
 {
-  HANDLE hFile;
-  hFile = CreateFile(TEXT("\\\\.\\pipe\\iDruide"), GENERIC_READ | GENERIC_WRITE,
-                             0, NULL, CREATE_ALWAYS,
-                             0, NULL);
+  HKEY hKey;
+	static char szValue[1024];
+  DWORD dwSize;
+  LONG Error;
 
-	return hFile;
-}
 
-void DeleteSrvNamedPipe(HANDLE hPipe)
-{
-	CloseHandle(hPipe);
+	memset(szValue, 0, sizeof(szValue));
+
+	// Open registry key LOCAL MACHINE
+  Error = RegOpenKeyEx(HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"), 0,
+                       KEY_READ, &hKey);
+
+  // Read the value
+  if (Error == ERROR_SUCCESS)
+	{
+
+		dwSize = sizeof(szValue);
+		RegGetValueA(hKey, NULL, "ProductName", RRF_RT_REG_SZ, NULL, (LPSTR) szValue, &dwSize);
+		RegCloseKey(hKey);
+  }
+
+	return szValue;
 }

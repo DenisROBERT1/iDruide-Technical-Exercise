@@ -1,5 +1,7 @@
 #pragma once
 
+bool Trace(const void *Buf, int Count);
+
 class TSrvPipe
 {
 private:

@@ -20,6 +20,7 @@
 SERVICE_STATUS          gSvcStatus; 
 SERVICE_STATUS_HANDLE   gSvcStatusHandle; 
 HANDLE                  ghSvcStopEvent = NULL;
+TSrvPipeIDruide *SrvPipeIDruide = NULL;
 
 VOID SvcInstall(void);
 VOID SvcUninstall(void);
@@ -29,7 +30,6 @@ VOID WINAPI SvcMain( DWORD, LPTSTR * );
 VOID ReportSvcStatus( DWORD, DWORD, DWORD );
 VOID SvcInit( DWORD, LPTSTR * ); 
 VOID SvcReportEvent( LPTSTR );
-
 
 //
 // Purpose: 
@@ -259,7 +259,6 @@ VOID SvcInit( DWORD dwArgc, LPTSTR *lpszArgv)
     //   Be sure to periodically call ReportSvcStatus() with 
     //   SERVICE_START_PENDING. If initialization fails, call
     //   ReportSvcStatus with SERVICE_STOPPED.
-		TSrvPipeIDruide *SrvPipeIDruide;
 
     // Create an event. The control handler function, SvcCtrlHandler,
     // signals this event when it receives the stop control code.
@@ -284,8 +283,13 @@ VOID SvcInit( DWORD dwArgc, LPTSTR *lpszArgv)
 
 		SrvPipeIDruide = new TSrvPipeIDruide(TEXT("\\\\.\\pipe\\iDruide"));
 
-    // Check whether to stop the service.
-    WaitForSingleObject(ghSvcStopEvent, INFINITE);
+		// Check whether to stop the service.
+		while (WaitForSingleObject(ghSvcStopEvent, 200) == WAIT_TIMEOUT)
+		{
+
+			SrvPipeIDruide->ProcessSrvNamedPipe();
+
+		}
 
 		delete SrvPipeIDruide;
 

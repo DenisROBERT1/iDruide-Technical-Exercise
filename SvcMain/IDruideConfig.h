@@ -7,6 +7,7 @@
 
 bool ConfigureCamera(bool bEnabled);
 bool ConfigurePassword(bool bAllowLetters, bool bAllowDigits, int Lenght);
+char* getOS();
 char* getMAC();
 
 HANDLE CreateSrvNamedPipe();
