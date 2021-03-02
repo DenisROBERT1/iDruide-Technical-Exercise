@@ -10,7 +10,7 @@ public:
 	TCltPipe(LPCTSTR szPipeName);
 	~TCltPipe(void);
 
-	bool CreateSrvNamedPipe(LPCTSTR szPipeName);
+	bool CreateCltNamedPipe(LPCTSTR szPipeName);
 	virtual bool SendCommand(LPCSTR szCommand, LPCSTR szReturn, int Length) = 0;
 };
 

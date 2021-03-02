@@ -10,7 +10,7 @@ TCltPipe::TCltPipe(void)
 
 TCltPipe::TCltPipe(LPCTSTR szPipeName)
 {
-	CreateSrvNamedPipe(szPipeName);
+	CreateCltNamedPipe(szPipeName);
 }
 
 TCltPipe::~TCltPipe(void)
@@ -19,7 +19,7 @@ TCltPipe::~TCltPipe(void)
 }
 
 
-bool TCltPipe::CreateSrvNamedPipe(LPCTSTR szPipeName)
+bool TCltPipe::CreateCltNamedPipe(LPCTSTR szPipeName)
 {
 	int LastError;
 	int i;
@@ -38,7 +38,7 @@ bool TCltPipe::CreateSrvNamedPipe(LPCTSTR szPipeName)
 
 	}
 	
-	return true;
+	return false;
 }
 
 TCltPipeIDruide::TCltPipeIDruide()

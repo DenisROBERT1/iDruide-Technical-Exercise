@@ -21,9 +21,6 @@ LRESULT FAR PASCAL SysTrayProc(HWND Handle, UINT Message, WPARAM wParam, LPARAM 
 bool CreateSysTrayIcon(HWND hDlg);
 bool DeleteSysTrayIcon(HWND hDlg);
 
-HANDLE CreateSrvNamedPipe();
-void DeleteSrvNamedPipe(HANDLE hPipe);
-
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
                      LPTSTR    lpCmdLine,
@@ -58,7 +55,7 @@ INT_PTR CALLBACK SvcInterfaceProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM
 		SetDlgItemText(hDlg, IDD_EDIT_LENGTH, TEXT("10"));
 		CheckDlgButton(hDlg, IDD_RADIOBUTTON_ALLOWLETTERS, MF_CHECKED);
 		CltPipeIDruide = new TCltPipeIDruide();
-		if (CltPipeIDruide->CreateSrvNamedPipe(TEXT("\\\\.\\pipe\\iDruide")))
+		if (CltPipeIDruide->CreateCltNamedPipe(TEXT("\\\\.\\pipe\\iDruide")))
 		{
 			CltPipeIDruide->SendCommand("INFO", szReturn, sizeof(szReturn));
 			SetDlgItemTextA(hDlg, IDD_LABEL_INFORMATIONS, szReturn);
