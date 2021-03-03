@@ -1,3 +1,9 @@
+// ----------------------------------------------------------------------------
+// prog:          TCltPipe.h
+//
+// Named pipe communication between user interface and the service (client side) 
+// ----------------------------------------------------------------------------
+
 #pragma once
 
 class TCltPipe

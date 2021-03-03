@@ -1,5 +1,8 @@
-// SvcInterface.cpp : définit le point d'entrée pour l'application.
+// ----------------------------------------------------------------------------
+// prog:          SvcInterface.cpp
 //
+// User interface 
+// ----------------------------------------------------------------------------
 
 #include "stdafx.h"
 #include "SvcInterface.h"

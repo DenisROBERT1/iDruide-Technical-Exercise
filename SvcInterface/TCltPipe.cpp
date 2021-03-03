@@ -1,5 +1,8 @@
-// TestPipe.cpp : définit le point d'entrée pour l'application.
+// ----------------------------------------------------------------------------
+// prog:          TCltPipe.cpp
 //
+// Named pipe communication between user interface and the service (client side) 
+// ----------------------------------------------------------------------------
 
 #include "stdafx.h"
 #include "TCltPipe.h"
