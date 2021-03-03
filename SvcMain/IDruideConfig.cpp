@@ -65,7 +65,22 @@ bool ConfigurePassword(bool bAllowLetters, bool bAllowDigits, int Length)
 // ----------------------------------------------------------------------------
 // List OS and computer informations (Ex : MacAddress, OS, Antivirus, Firewall, Battery...)
 // ----------------------------------------------------------------------------
-// Ordinateur\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+bool Info(char *szReturn, int Size)
+{
+  char* pMac;
+
+	strcpy_s(szReturn, Size - strlen(szReturn), "OS : ");
+	strcat_s(szReturn, Size - strlen(szReturn), getOS());
+	strcat_s(szReturn, Size - strlen(szReturn), "\n");
+
+	strcat_s(szReturn, Size - strlen(szReturn), "MAC Adress : ");
+	pMac = getMAC();
+	strcat_s(szReturn, Size - strlen(szReturn), pMac);
+	free(pMac);
+	strcat_s(szReturn, Size - strlen(szReturn), "\n");
+
+	return true;
+}
 
 
 // ----------------------------------------------------------------------------
@@ -130,6 +145,9 @@ char* getMAC()
   return mac_addr; // caller must free.
 }
 
+// ----------------------------------------------------------------------------
+// List OS
+// ----------------------------------------------------------------------------
 char* getOS()
 {
   HKEY hKey;

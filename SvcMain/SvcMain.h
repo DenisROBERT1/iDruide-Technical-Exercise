@@ -1,3 +1,9 @@
+// ----------------------------------------------------------------------------
+// prog:          SrvMain.h
+//
+// Main program of iDruide service 
+// ----------------------------------------------------------------------------
+
 #pragma once
 
 // The following are message definitions.

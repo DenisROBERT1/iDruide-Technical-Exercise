@@ -1,3 +1,9 @@
+// ----------------------------------------------------------------------------
+// prog:          TSrvPipe.h
+//
+// Named pipe communication between user interface and the service (server side) 
+// ----------------------------------------------------------------------------
+
 #pragma once
 
 bool Trace(const void *Buf, int Count);

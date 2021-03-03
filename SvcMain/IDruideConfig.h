@@ -7,6 +7,7 @@
 
 bool ConfigureCamera(bool bEnabled);
 bool ConfigurePassword(bool bAllowLetters, bool bAllowDigits, int Lenght);
+bool Info(char *szReturn, int Size);
 char* getOS();
 char* getMAC();
 
